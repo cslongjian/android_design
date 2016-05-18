@@ -47,6 +47,7 @@
 		8）zygote 收到 ActivityManagerService 的连接请求，执行runSelectLoopMode处理请求。
 		9）zygote 处理请求会通过forkAndSpecialize 启动新的应用进程，并最终启动Home.
 		
+	![启动](https://github.com/cslongjian/android_design/blob/master/启动过程.png)
 	
 
 
