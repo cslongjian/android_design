@@ -1,11 +1,53 @@
 #第一部分 基础篇
 
 * 第一章 Android体系结构及源代码阅读环境搭建
+	* 发展过程
+	* Android体系结构
+		* 2.1静态视觉的体系结构。
+   			
+   			应用层 — 应用框架层 —  Android运行环境和系统运行库层 —Linux内核层
+
+			应用框架层：activity manager 、window manager、content provide 、View system、package  manager 、、、
+
+		* 2.2 动态视觉的体系结构。
+
+			NDK开发环境配置
+			
+			相对于SDK NDK 有以下主要优势
+			
+				1将一些涉及商业机密的代码用本地代码实现。发布不容易被盗取
+				2需要高效计算的代码使用NDK效率更高。
+				3移植已经有的C/C++代码资源，特别是游戏。
+
+			劣势也有
+			
+				1NDK支持的功能不如SDK
+				2兼容性不咋地
+				3调试难度大。
+
+
 * 第二章 框架基础JNI
 
 
 
+
 # 第二部分启动篇
+
+* 第四章 Android启动的上层实现
+
+	这部分的启动过程
+
+		1）init启动的核心Daemon服务包括Android世界的第一个Dalvik虚拟机zygote
+		2）zygote中定义一个socket，用于接收ActivityManagerService启动应用程序的请求
+		3）zygote通过fork系统调用创建system_server进程
+		4）在system_server进程的init1和init2 阶段分别启动Native system service 和 Java System Service
+		5）系统服务启动后会注册到ServiceManager中，用于Binder通信。
+		6）ActivityManagerService进入systemReady状态
+		7）在systemReady状态，ActivityManagerService 会与 zygote 的socket通信，请求启动Home
+		8）zygote 收到 ActivityManagerService 的连接请求，执行runSelectLoopMode处理请求。
+		9）zygote 处理请求会通过forkAndSpecialize 启动新的应用进程，并最终启动Home.
+		
+	
 
 
 # 第三部分 Binder篇
