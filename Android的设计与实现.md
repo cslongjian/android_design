@@ -53,6 +53,27 @@
 
 # 第三部分 Binder篇
 
+* 第五章 Binder在native框架层的实现
+	
+	以进程为单位分配虚拟地址空间，这样导致进程相互隔离，需要进行通信必须通过Android的Linux内核提供的进程间通信（IPC）
+	Linux进程间通信方式
+	
+		1）socket
+		2）signal（信号）
+		3）pipe（管道）
+		4）Message Queue （消息队列）
+		5）semaphore （信息量）
+		6）shared Memory（共享内存）
+	这些方式要么效率低下，要么不适合封装给上层复用。
+	Android中没有大规模的使用。而是使用Binder
+
+
+
+
+
+* 第六章 Binder 在Java框架层的实现
+
+
 
 # 第四部分 消息通信篇
 * 第七章 线程消息同学与异步处理
